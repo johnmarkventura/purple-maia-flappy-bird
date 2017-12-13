@@ -14,7 +14,14 @@ var menuState = {
     
     
     create: function() {
-        button = game.add.button(game.world.centerX - 95, 200,'button', this.startGame)
+        button = game.add.button(game.world.centerX - 95, 200,'button', this.startGame, this, 2, 1, 0);
+        
+        var spaceKey = game. input. keyboard. addKey(Phaser.keyboard.SPACEBAR);
+        spaceKey.onDown.add(this.startGame, this);
+        
+        text = game.add.text(110, 125, "Score:");
+        
+        text = game.add.text(225, 125, playState.score);
     },
     
     
@@ -23,7 +30,7 @@ var menuState = {
     },
 
     startGame: function() {
-        // game.state.start('play');
+        game.state.start('play');
     }
 
 };
